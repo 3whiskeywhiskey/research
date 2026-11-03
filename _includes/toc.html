@@ -1,0 +1,19 @@
+{% comment %}
+Builds a table of contents from the h2 headings in `include.html` (the rendered page body).
+kramdown gives every heading an id, so this needs no plugin.
+{% endcomment %}
+{% assign chunks = include.html | split: '<h2 ' %}
+{% assign n = chunks.size | minus: 1 %}
+{% if n > 1 %}
+<nav class="toc" aria-label="Contents">
+  <p class="toc-title">Contents</p>
+  <ol>
+  {% for chunk in chunks offset: 1 %}
+    {% assign parts = chunk | split: 'id="' %}
+    {% assign idpart = parts[1] | split: '"' | first %}
+    {% assign text = chunk | split: '</h2>' | first | split: '>' | last | strip_html | strip %}
+    <li><a href="#{{ idpart }}">{{ text }}</a></li>
+  {% endfor %}
+  </ol>
+</nav>
+{% endif %}

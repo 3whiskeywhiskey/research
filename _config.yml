@@ -1,0 +1,58 @@
+title: research.whiskey.works
+tagline: Notes from a one-person GPU lab
+description: >-
+  Dated, versioned write-ups of experiments run on a small private GPU fleet:
+  kernel ports to new silicon, model surgery, measurement methods, and the
+  infrastructure underneath. Every note links the code and the pull requests.
+url: https://research.whiskey.works
+baseurl: ""
+author:
+  name: whiskey
+  url: https://github.com/3whiskeywhiskey
+github_username: 3whiskeywhiskey
+repository: 3whiskeywhiskey/research
+lang: en
+timezone: America/Los_Angeles
+
+collections:
+  projects:
+    output: true
+    permalink: /:name/
+    sort_by: date
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+  - scope:
+      path: ""
+    values:
+      layout: page
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+feed:
+  collections:
+    projects:
+      path: feed.xml
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  math_engine: ~
+  syntax_highlighter: rouge
+  toc_levels: 2..3
+
+exclude:
+  - code
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - DESIGN.md

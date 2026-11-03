@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="project">
+  <header class="project-head">
+    <h1 class="project-title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="project-subtitle">{{ page.subtitle }}</p>{% endif %}
+    {% include project-meta.html project=page %}
+    {% if page.summary %}<p class="project-summary">{{ page.summary }}</p>{% endif %}
+    {% if page.links %}
+    <ul class="project-links">
+      {% for l in page.links %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+    </ul>
+    {% endif %}
+  </header>
+
+  <div class="project-body">
+    <aside class="project-aside">
+      {% include toc.html html=content %}
+    </aside>
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+
+  {% if page.cite %}
+  <section class="cite" aria-labelledby="cite-h">
+    <h2 id="cite-h">Cite this note</h2>
+    <pre class="cite-block"><code>{{ page.cite | strip }}</code></pre>
+  </section>
+  {% endif %}
+</article>

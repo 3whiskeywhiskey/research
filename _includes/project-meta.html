@@ -1,0 +1,4 @@
+{% comment %} One sentence of provenance under a project title. {% endcomment %}
+<p class="project-meta">
+  Published {{ include.project.date | date: "%-d %B %Y" }}{% if include.project.updated and include.project.updated != include.project.date %}, last updated {{ include.project.updated | date: "%-d %B %Y" }}{% endif %}{% if include.project.hardware %}, on {{ include.project.hardware }}{% endif %}.{% if include.project.status %} {{ include.project.status }}{% endif %}
+</p>
